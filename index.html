@@ -5,6 +5,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Unity WebGL Player | AR</title>
     <meta name="description" content="">
+    
+    <!-- Разрешаем всё необходимое для Unity и WebXR -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval' data: blob:; script-src * 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob:; connect-src * data: blob:; img-src * data: blob:;">
+    
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
@@ -29,11 +33,13 @@
     </div>
     <script>
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/build.loader.js";
+      // ВАЖНО: Имена файлов строго соответствуют тому, что лежит в вашей папке Build на GitHub
+      var loaderUrl = buildUrl + "/Build.loader.js";
+      
       var config = {
-        dataUrl: buildUrl + "/build.data.unityweb",
-        frameworkUrl: buildUrl + "/build.framework.js.unityweb",
-        codeUrl: buildUrl + "/build.wasm.unityweb",
+        dataUrl: buildUrl + "/Build.data",
+        frameworkUrl: buildUrl + "/Build.framework.js",
+        codeUrl: buildUrl + "/Build.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "AR",
