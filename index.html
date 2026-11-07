@@ -6,8 +6,8 @@
     <title>Unity WebGL Player | My project</title>
     <meta name="description" content="">
     
-    <!-- ДОБАВЛЕНО: Разрешаем jsdelivr.net для работы WebXR Export -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self' data: blob: https://cdn.jsdelivr.net; worker-src 'self' blob:;">
+    <!-- МАКСИМАЛЬНО РАЗРЕШАЮЩАЯ ПОЛИТИКА БЕЗОПАСНОСТИ для Unity WebGL и WebXR -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval' data: blob:; script-src * 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob:; connect-src * data: blob:; img-src * data: blob:;">
     
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
@@ -33,7 +33,9 @@
     </div>
     <script>
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/Build.loader.js";
+      // Добавлен параметр ?v=3, чтобы браузер не кэшировал старый загрузчик
+      var loaderUrl = buildUrl + "/Build.loader.js?v=3";
+      
       var config = {
         dataUrl: buildUrl + "/Build.data",
         frameworkUrl: buildUrl + "/Build.framework.js",
